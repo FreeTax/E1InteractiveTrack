@@ -1,13 +1,54 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <script src="index.js"></script>
-    <link rel="main.css">
+    <meta charset="utf-8" />
+    <title>E1 Interactive Viewer</title>
+    <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no" />
+    <script src="https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.js"></script>
+    <link href="https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.css" rel="stylesheet" />
+    <link rel="stylesheet" href="main.css">
+
 </head>
+
 <body>
-    
+
+    <script src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-compare/v0.4.0/mapbox-gl-compare.js"></script>
+    <link rel="stylesheet"
+        href="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-compare/v0.4.0/mapbox-gl-compare.css"
+        type="text/css" />
+    <div id="comparison-container">
+        <div id="before" class="map"></div>
+        <div id="after" class="map"></div>
+    </div>
+
+    <!-- mapbox things  -->
+    <script>
+        mapboxgl.accessToken = 'pk.eyJ1IjoiZnJhbmNlc2NvbWF6em9sYSIsImEiOiJjank2M2pndTgwZDE1M21xbjhqZ3dvbmo0In0.TObe0EqyBi8LkzjJoNBkeg';
+        var beforeMap = new mapboxgl.Map({
+            container: 'before',
+            style: 'mapbox://styles/francescomazzola/cki7v8b4u283l19rye45n6wqz',
+            center: [9.753129975870252, 44.388256017118692],
+            zoom: 15
+        });
+
+        var afterMap = new mapboxgl.Map({
+            container: 'after',
+            style: 'mapbox://styles/francescomazzola/cki7wooxb050b19o14l8g713x',
+            center: [9.753129975870252, 44.388256017118692],
+            zoom: 15
+        });
+
+        // A selector or reference to HTML element
+        var container = '#comparison-container';
+
+        var map = new mapboxgl.Compare(beforeMap, afterMap, container, {
+            // Set this to enable comparing two maps by mouse movement:
+            // mousemove: true
+        });
+        
+    </script>
+
 </body>
+
 </html>
